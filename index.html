@@ -1,22 +1,341 @@
-HOOLIGANSTREAM
-		ACCUEIL
-		FILMS
-		CONTACT
-LE CINÉMA DES HOOLIGANS
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HooliganStream</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Bebas Neue', 'Impact', sans-serif;
+    }
 
-VOIR LES FILMS
-NOS FILMS
-￼
-Green Street Hooligans
-REGARDER
-￼
-soon
-REGARDER
-￼
-soon
-REGARDER
-CONTACT
-Une question ou une suggestion ? Envoie ton message.
-ENVOYER
+    body {
+      background-color: #0e0e0e;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-© 2025 HooliganStream — Tous droits réservés.
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid #d41616;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 2.2rem;
+      color: #d41616;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #d41616;
+    }
+
+    .banner {
+      height: 100vh;
+      background: url('https://lahorde.info/local/cache-vignettes/L730xH340/mesos_avant_une_attaque_de_supporters-e4959.jpg?1636627183') no-repeat center center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      padding-top: 80px;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .banner h1 {
+      font-size: 4rem;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 2px 2px 10px #000;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+    }
+
+    .banner p {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .banner button {
+      background: #d41616;
+      color: #fff;
+      border: none;
+      padding: 15px 35px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .banner button:hover {
+      background: #a50f0f;
+    }
+
+    .films {
+      padding: 80px 40px;
+      background: #141414;
+      text-align: center;
+    }
+
+    .films h2 {
+      font-size: 3rem;
+      color: #d41616;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+    }
+
+    .film-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .film-card {
+      background: #1e1e1e;
+      border: 2px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .film-card:hover {
+      transform: scale(1.05);
+      border-color: #d41616;
+    }
+
+    .film-card img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .film-card h3 {
+      font-size: 1.6rem;
+      color: #fff;
+      margin: 15px 0;
+    }
+
+    .film-card button {
+      background: #d41616;
+      border: none;
+      padding: 10px 20px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .film-card button:hover {
+      background: #a50f0f;
+    }
+
+    .contact {
+      padding: 80px 20px;
+      background: url('https://wallpaperaccess.com/full/2052935.jpg') no-repeat center center/cover;
+      position: relative;
+    }
+
+    .contact::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.75);
+    }
+
+    .contact-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact h2 {
+      font-size: 3rem;
+      color: #d41616;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .contact p {
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid #444;
+      color: #fff;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background: #d41616;
+      border: none;
+      padding: 15px 30px;
+      color: #fff;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background: #a50f0f;
+    }
+
+    footer {
+      background: #0e0e0e;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #222;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">HooliganStream</div>
+    <nav>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#films">Films</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="banner" id="accueil">
+    <div class="banner-content">
+      <h1>Le Cinéma des Hooligans</h1>
+      <p></p>
+      <button onclick="window.location.href='#films'">Voir les films</button>
+    </div>
+  </section>
+
+  <section class="films" id="films">
+    <h2>Nos Films</h2>
+    <div class="film-gallery">
+      <div class="film-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.3_i6DIIrYFoI6xxTaWkK3AHaK8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Film 1">
+        <h3>Green Street Hooligans</h3>
+        <button onclick="window.location.href='player.html'">Regarder</button>
+      </div>
+
+      <div class="film-card">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.DN0uiwWnvjxdkIF6m8WApAHaEJ?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Film 2">
+        <h3>soon</h3>
+        <button>Regarder</button>
+      </div>
+
+      <div class="film-card">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.d5uD2NFAyWQUNn5JFTm9mgHaE0?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Film 3">
+        <h3>soon</h3>
+        <button>Regarder</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="contact" id="contact">
+    <div class="contact-content">
+      <h2>Contact</h2>
+      <p>Une question ou une suggestion ? Envoie ton message.</p>
+      <form id="contactForm">
+        <input type="text" id="nom" placeholder="Ton nom" required>
+        <input type="email" id="email" placeholder="Ton email" required>
+        <textarea id="message" placeholder="Ton message..." required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
+      <p id="responseMsg"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 HooliganStream — Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    // 🧠 URL de ta webhook (ex : Discord ou autre)
+    const WEBHOOK_URL = "https://discord.com/api/webhooks/1428084276645330944/MuW2BEnnfFtNO7DfZ1K_mw28c0hMtjx9dNP_H9KdgZ99Wo_LovPph7KSOoaPoaEedQhW";
+
+    document.getElementById("contactForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nom = document.getElementById("nom").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      const payload = {
+        content: `📨 Nouveau message depuis HooliganStream :\n👤 Nom: ${nom}\n📧 Email: ${email}\n💬 Message: ${message}\n 📨@everyone📨 `
+      };
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          document.getElementById("responseMsg").innerText = "✅ Message envoyé avec succès !";
+          document.getElementById("contactForm").reset();
+        } else {
+          document.getElementById("responseMsg").innerText = "❌ Erreur lors de l’envoi.";
+        }
+      } catch (err) {
+        document.getElementById("responseMsg").innerText = "⚠️ Impossible de contacter la webhook.";
+      }
+    });
+  </script>
+</body>
+</html>
